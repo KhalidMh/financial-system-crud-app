@@ -1,0 +1,11 @@
+{
+    "name": "khalidmh/think-huge",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Khalidmh\\ThinkHuge\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {}
+}
