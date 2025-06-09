@@ -3,8 +3,11 @@
 // Autoload classes
 require_once __DIR__ . '/../../vendor/autoload.php';
 
+use App\Models\Transaction;
+use Dotenv\Dotenv;
+
 // Load environment variables from .env file
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../..');
 $dotenv->load();
 
 // start a session
@@ -19,8 +22,6 @@ if (!isset($_SESSION['admin_id'])) {
     echo json_encode(['success' => false, 'message' => 'Unauthorized']);
     exit;
 }
-
-use App\Models\Transaction;
 
 try {
     $transactionModel = new Transaction();
