@@ -2,6 +2,7 @@
 
 return [
     'host' => $_ENV['DB_HOST'] ?? 'mysql',
+    'port' => $_ENV['DB_PORT'] ?? '3306',
     'dbname' => $_ENV['DB_NAME'] ?? 'app',
     'username' => $_ENV['DB_USER'] ?? 'user',
     'password' => $_ENV['DB_PASS'] ?? 'password',
