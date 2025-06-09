@@ -8,9 +8,6 @@ class ClientController
 {
     private $clientModel;
 
-    /**
-     * Constructor - Initialize the client model
-     */
     public function __construct()
     {
         $this->clientModel = new Client();

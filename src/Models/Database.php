@@ -60,16 +60,6 @@ class Database
     }
 
     /**
-     * Get the PDO database connection instance.
-     *
-     * @return PDO The active database connection
-     */
-    public function getConnection(): PDO
-    {
-        return $this->connection;
-    }
-
-    /**
      * Execute a prepared SQL statement with optional parameters.
      * Prepares the statement, binds parameters, and executes it.
      *

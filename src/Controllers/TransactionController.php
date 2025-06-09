@@ -10,11 +10,6 @@ class TransactionController
     private $transactionModel;
     private $clientModel;
 
-    /**
-     * Initialize the TransactionController with required models.
-     *
-     * Creates instances of Transaction and Client models for database operations.
-     */
     public function __construct()
     {
         $this->transactionModel = new Transaction();

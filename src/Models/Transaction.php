@@ -6,11 +6,6 @@ class Transaction
 {
     private $db;
 
-    /**
-     * Constructor - Initialize database connection
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->db = Database::getInstance();

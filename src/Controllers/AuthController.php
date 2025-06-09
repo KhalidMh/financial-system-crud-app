@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Middleware\AuthMiddleware;
 use App\Models\Admin;
 
 class AuthController
@@ -23,10 +24,7 @@ class AuthController
      */
     public function showLogin(): void
     {
-        if (isset($_SESSION['admin_id'])) {
-            header('Location: /clients');
-            exit;
-        }
+        AuthMiddleware::redirectIfAuthenticated();
 
         view('auth/login');
     }

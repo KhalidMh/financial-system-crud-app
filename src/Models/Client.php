@@ -6,9 +6,6 @@ class Client
 {
     private $db;
 
-    /**
-     * Constructor - Initialize the Client model with database connection
-     */
     public function __construct()
     {
         $this->db = Database::getInstance();
