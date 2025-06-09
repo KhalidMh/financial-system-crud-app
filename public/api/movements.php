@@ -1,17 +1,8 @@
 <?php
 
-// Autoload classes
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 use App\Models\Transaction;
-use Dotenv\Dotenv;
-
-// Load environment variables from .env file
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../..');
-$dotenv->load();
-
-// start a session
-session_start();
 
 // set the content type to JSON
 header('Content-Type: application/json');
