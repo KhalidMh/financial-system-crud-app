@@ -1,5 +1,4 @@
-<?php $title = 'Clients - Financial System'; ?>
-<?php view('layouts/header', ['title' => $title]); ?>
+<?php view('layouts/header', ['title' => 'Clients - Financial System']); ?>
 
 <div class="row">
     <div class="col-12">

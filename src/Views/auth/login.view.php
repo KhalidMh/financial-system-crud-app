@@ -1,6 +1,4 @@
-<?php $title = 'Login - Financial System'; ?>
-
-<?php view('layouts/header', ['title' => $title]) ?>
+<?php view('layouts/header', ['title' => 'Login - Financial System']) ?>
 
 <div class="row justify-content-center">
     <div class="col-md-6 col-lg-4">

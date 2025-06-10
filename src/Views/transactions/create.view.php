@@ -1,5 +1,4 @@
-<?php $title = 'Add Transaction - Financial System'; ?>
-<?php view('layouts/header', ['title' => $title]); ?>
+<?php view('layouts/header', ['title' => 'Add Transaction - Financial System']); ?>
 
 <div class="row">
     <div class="col-12">
