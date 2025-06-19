@@ -16,10 +16,11 @@ A simple yet robust CRUD (Create, Read, Update, Delete) application built with v
 - MySQL 8.0
 - Composer
 - Docker and Docker Compose (optional, for containerized setup)
+- XAMPP (optional, for local development)
 
 ## Installation and Setup
 
-You can run this application in two ways: using Docker or setting it up manually.
+You can run this application in three ways: using Docker, XAMPP, or setting it up manually.
 
 ### Option 1: Using Docker (Recommended)
 
@@ -51,7 +52,25 @@ This method requires Docker and Docker Compose to be installed on your system.
    - Web app: [http://localhost:8080](http://localhost:8080)
    - API: [http://localhost:8080/api/movements.php](http://localhost:8080/api/movements.php)
 
-### Option 2: Manual Setup
+### Option 2: Using XAMPP (Great for Local Development)
+
+This is perfect for developers who prefer XAMPP for local development.
+
+**For detailed XAMPP setup instructions, see [XAMPP_SETUP.md](XAMPP_SETUP.md)**
+
+Quick setup:
+1. Install XAMPP with PHP 8.2
+2. Place project in `htdocs/php-crud-app/`
+3. Run `composer install`
+4. Copy `.env.xampp` to `.env`
+5. Import `database/schema.sql` via phpMyAdmin
+6. Access: [http://localhost/php-crud-app/public](http://localhost/php-crud-app/public)
+
+Default login:
+- Username: `admin`
+- Password: `admin123`
+
+### Option 3: Manual Setup
 
 1. Install PHP dependencies:
    ```bash
@@ -71,7 +90,7 @@ This method requires Docker and Docker Compose to be installed on your system.
    mysql -u user -p crud_app < database/schema.sql
    ```
 
-5. Configure your web server (Apache/Nginx) to point to the `public` directory as the document root.
+4. Configure your web server (Apache/Nginx) to point to the `public` directory as the document root.
 
    For Apache, you might add this to your virtual host configuration:
    ```apache
@@ -103,19 +122,19 @@ This method requires Docker and Docker Compose to be installed on your system.
    }
    ```
 
-6. Create a `.env` file:
+5. Create a `.env` file:
    ```bash
    cp .env.example .env
    ```
    Then update it with your database credentials.
 
-7. Ensure the following PHP extensions are enabled:
+6. Ensure the following PHP extensions are enabled:
    ```bash
    sudo apt-get install php8.2-mysql php8.2-mysqli
    # Or for other distributions, use their package manager
    ```
 
-8. Access the application via your configured web server.
+7. Access the application via your configured web server.
 
 ## Project Structure
 
@@ -124,6 +143,7 @@ This method requires Docker and Docker Compose to be installed on your system.
 ├── database/         # Database schema
 ├── docker/           # Docker configuration files
 ├── public/           # Public files (entry point)
+│   ├── .htaccess     # URL rewriting (for Apache/XAMPP)
 │   ├── api/          # API endpoints
 │   ├── css/          # Stylesheets
 │   ├── js/           # JavaScript files
@@ -133,21 +153,34 @@ This method requires Docker and Docker Compose to be installed on your system.
 │   ├── Middleware/   # Middleware classes
 │   ├── Models/       # Model classes
 │   └── Views/        # View templates
-└── vendor/           # Composer dependencies
+├── vendor/           # Composer dependencies
+├── .env.xampp        # XAMPP-specific environment file
+└── XAMPP_SETUP.md    # Detailed XAMPP setup guide
 ```
 
 ## Database Configuration
 
-Database connection settings can be modified in the `.env` file or in `config/database.php`. The default settings in Docker mode are:
+Database connection settings can be modified in the `.env` file or in `config/database.php`. 
 
+**Default settings by environment:**
+
+**Docker mode:**
 - Database host: `mysql`
 - Database name: `crud_app`
 - Username: `user`
 - Password: `pass123`
 
+**XAMPP mode:**
+- Database host: `localhost`
+- Database name: `crud_app`
+- Username: `root`
+- Password: (empty)
+
 ## Debugging
 
 This project includes Xdebug for debugging when using Docker. The Xdebug configuration can be found in `docker/php/xdebug.ini`.
+
+For XAMPP debugging, you can enable Xdebug through XAMPP's PHP configuration.
 
 ## API Endpoints
 
@@ -157,7 +190,7 @@ The application provides RESTful API endpoints at `/api/movements.php` for worki
 
 ### Running PHP Built-in Server (for development only)
 
-If you're not using Docker, you can use PHP's built-in server for development:
+If you're not using Docker or XAMPP, you can use PHP's built-in server for development:
 
 ```bash
 cd public
@@ -165,6 +198,10 @@ php -S localhost:8000
 ```
 
 Then access the application at [http://localhost:8000](http://localhost:8000)
+
+### XAMPP Development
+
+For XAMPP users, the application runs directly through Apache. See [XAMPP_SETUP.md](XAMPP_SETUP.md) for detailed instructions.
 
 ### Stopping Docker Containers
 
@@ -176,4 +213,12 @@ To also remove volumes:
 ```bash
 docker compose down -v
 ```
+
+## Login Credentials
+
+Default admin credentials:
+- Username: `admin`
+- Password: `admin123`
+
+**Important:** Change these credentials in production environments!
 
