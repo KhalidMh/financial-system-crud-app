@@ -40,10 +40,10 @@ class AuthController
      */
     public function login(): void
     {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: /login');
-            exit;
-        }
+        // if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        //     header('Location: /login');
+        //     exit;
+        // }
 
         $username = $_POST['username'] ?? '';
         $password = $_POST['password'] ?? '';
@@ -58,7 +58,7 @@ class AuthController
 
         if ($admin) {
             $_SESSION['admin_id'] = $admin['id'];
-            $_SESSION['admin_username'] = $admin['username'];
+            // $_SESSION['admin_username'] = $admin['username'];
             header('Location: /clients');
         } else {
             $_SESSION['error'] = 'Invalid credentials';
