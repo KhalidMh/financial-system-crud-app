@@ -12,6 +12,7 @@ class AuthMiddleware
     public static function requireAuth(): void
     {
         if (!isset($_SESSION['admin_id'])) {
+            $_SESSION['error'] = 'You must be logged in to access this page.';
             header('Location: /login');
             exit;
         }
